@@ -3,10 +3,7 @@ body{
   color: #040404;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-img-container{
-  width: 100px;
-  height: 100px;
-  position: relative;
-  overflow: hidden;
+
+.img{
   border-radius: 50%;
 }
