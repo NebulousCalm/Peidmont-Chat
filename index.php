@@ -8,42 +8,44 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script defer src="./javascript/open-close.js"></script>
   <script defer src="./javascript/main.js"></script>
+  <script defer src="./javascript/name.js"></script>
+  <script defer src="./javascript/cookies.js"></script>
   <script>
+  // iframe refresh
   $(function() {
     function refreshIFrame() {
       setTimeout(function() {
         $('#iFrame').attr('src', $('#iFrame').attr('src'));
         $('#chatLog').html( $('#iFrame').contents().find('body').find('div').html() );
         refreshIFrame();
-      }, 2000);    
+      }, 1000);    
     }
     refreshIFrame();
   });
   </script>
 </head>
-<body>
+<body onload="checkCookie()">
 <!-- Sidenav for navigating preferences and settings -->
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <p class="a">Logout</p>
-  <p class="a">Themes</p>
-  <p class="a">Preferences</p>
+  <a href="./TermsOfService/" class="a">Terms of Service</a>
   <p class="a">Contact Us</p>
-  <p class="a">About</p>
+  <a href="./About/" class="a">About</a>
   <p class="a" id="openChatBot">Chat Bot</p>
 </div>
 
-<button onclick="openNav()">Sidenav open</button>
+<!--<button onclick="openNav()">Open Navigation</button>-->
 <div id="main">
 </div>
 
-<form method="post">
-  <input type="text" name="user" placeholder="user"><br>
-  Enter Your Text Here:<br>
-  <input type="text" name="input"><br>
-  <input type="submit" name="submit">
+<!-- form -->
+<form class="input-form text" method="post">
+  <input type="text" name="user" placeholder="user" id="name" readonly><br>
+  <br>
+  <input type="text" name="input" placeholder="Enter a message" required>
+  <input type="submit" name="Send">
 </form>
-<!-- The Modal -->
+<!-- chatbot -->
 <div id="myModal" class="modal">
 
   <div class="chatbot-container" id="chatbot-modal">
@@ -54,36 +56,26 @@
     <p id="chatbot-modal">(Or Never)</p>
   </div>
 </div>
-
-<div id="chatLog"></div>
-<iframe src="chat.php" id="iFrame"></iframe>
-
-<!--
-<div class="container">
-  <h1 class="header">Login</h1><br>
-  <h2 class="header">Sign Into Your Account</h2>
-  <input class="username" id="username()" type="text" placeholder="Username"><br><br>
-  <input class="password" id="password()" type="password" placeholder="Password"><br><br>
-  <a href="index.html"><button class="login" id="logIn()" type="submit">Log In</button></a>
-  <p>Don't have an account? Create one <a href="register.php">here</a>.</p>
-</div> -->
+<!-- chat iframe -->
+  <div id="chatLog"></div>
+  <iframe src="chat.php" id="iFrame"></iframe>
 </body>
 </html>
 <!-- Zach's PHP script -->
 <?php
-              
-if(isset($_POST['input']))
-{
-$data=htmlspecialchars($_POST['input']);
 
-$user = $_POST['user'];
+if(isset($_POST['input'])) {
+  $filename = "./chat.dat";
+  $data = htmlspecialchars($_POST['input']);
+  $user = $_POST['user'];
 
-# $output='<p class="text">' .$user.'' .$data. '</p>';
-$output= $user.': ' .$data. '\\n';
-
-$fp = fopen('chat.txt', 'a');
-
-fwrite($fp, $output);
-fclose($fp);
+  # $output='<p class="text">' .$user.'' .$data. '</p>';
+  $output= $user.': ' .$data. '\\n';
+  $file_contents = file_get_contents($filename);
+  # $fp = fopen('chat.txt', 'a');
+  # fwrite($fp, $output);
+  # fclose($fp);
+  $content = $output . $file_contents;
+  file_put_contents($filename, $content);  
 }
 ?>
