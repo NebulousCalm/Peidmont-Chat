@@ -34,7 +34,7 @@
   <p class="a" id="openChatBot">Chat Bot</p>
 </div>
 
-<!--<button onclick="openNav()">Open Navigation</button>-->
+<button onclick="openNav()">Open Navigation</button>
 <div id="main">
 </div>
 
