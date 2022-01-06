@@ -3,10 +3,6 @@ body{
   color: #040404;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-.header{
-  text-align: center;
-}
-
-.subheader{
-  text-align: center;
+img{
+  border-radius: 40%;
 }
