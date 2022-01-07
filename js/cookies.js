@@ -1,11 +1,11 @@
-function setCookie(cname, cvalue, exdays){
+const setCookie = (cname, cvalue, exdays) => {
   const d = new Date();
   d.setTime(d.getTime() + (exdays*24*60*60*1000));
   let expires = "expires=" + d.toUTCString();
   document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/"; 
 }
 
-function getCookie(cname){
+const getCookie = (cname) => {
   let name = cname + "=";
   let decodedCookie = decodeURIComponent(document.cookie);
   let ca = decodedCookie.split(';');
@@ -35,7 +35,7 @@ function getCookie(cname){
   }
 } */
 
-function checkCookie(){
+const checkCookie = () => {
   let user = getCookie('username');
   if(user != ""){
     var x = user; // For document.getElementById('inputField').value;
