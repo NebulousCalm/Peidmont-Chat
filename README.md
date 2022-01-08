@@ -3,7 +3,7 @@ Sus-Chat is a chat app made for our class when Google Hangouts is blocked
 
 Made by **[Zach Richman](https://about.zachrichman.repl.co)** and **[Noah DePalma (TacoSnack)](https://github.com/TacoSnack)**
 
-Front end made with HTML, jQuery, and CSS
+Front end made with HTML, JS (jQuery), and CSS
 
 Back end made with PHP and a .txt file as a database
 
