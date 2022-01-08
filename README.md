@@ -1,7 +1,6 @@
-# Sus-Chat-Beta
->## The Real Sus-Chat!
-
-### A collaboration between ZachJRichman and TacoSnack. 
-
-### This is what happens when your school blocks google hangouts. So you logically spend the next 3 1/2 months just working on a beta...
-#### Why do we do this to outselves???
+# Sus-Chat
+Sus-Chat is a chat app made for our class when Google Hangouts is blocked<br><br>
+Made by [Zach Richman](https://github.com/ZachJRichman) and [Noah DePalma](https://github.com/TacoSnack)<br><br>
+Front end made with HTML, jQuery, and CSS<br><br>
+Back end made with PHP and a .txt file as a database<br><br>
+Sus-Chat is private but feel free to chat on [Discord](https://discord.gg/EcDxYEFAPA)

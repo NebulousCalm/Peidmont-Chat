@@ -4,37 +4,37 @@
   <title>Sus-Chat-Beta</title>
   <noscript>If you are seeing this it means you don't have javascript please enable it</noscript>
   <link rel="stylesheet" href="./styles/main.css">
-  <link rel="stylesheet" href="./styles/register.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script defer src="./javascript/open-close.js"></script>
-  <script defer src="./javascript/main.js"></script>
-  <script defer src="./javascript/name.js"></script>
-  <script defer src="./javascript/cookies.js"></script>
+  <script defer src="./js/chatbot.js"></script>
+  <script defer src="./js/nav.js"></script>
+  <!--<script defer src="./js/name.js"></script>-->
+  <script defer src="./js/cookies.js"></script>
   <script>
   // iframe refresh
-  $(function() {
-    function refreshIFrame() {
-      setTimeout(function() {
+  $(() => {
+    const refreshIFrame = () => {
+      setTimeout(() => {
         $('#iFrame').attr('src', $('#iFrame').attr('src'));
         $('#chatLog').html( $('#iFrame').contents().find('body').find('div').html() );
         refreshIFrame();
       }, 1000);    
     }
     refreshIFrame();
+    checkCookie();
   });
+
   </script>
 </head>
-<body onload="checkCookie()">
+<body>
 <!-- Sidenav for navigating preferences and settings -->
 <div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="./TermsOfService/" class="a">Terms of Service</a>
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#8592;</a>
   <p class="a">Contact Us</p>
-  <a href="./About/" class="a">About</a>
+  <a href="./about" class="a">About</a>
   <p class="a" id="openChatBot">Chat Bot</p>
 </div>
 
-<button onclick="openNav()">Open Navigation</button>
+<button id="openNav" onclick="openNav()">Open Navigation</button>
 <div id="main">
 </div>
 
@@ -42,8 +42,8 @@
 <form class="input-form text" method="post">
   <input type="text" name="user" placeholder="user" id="name" readonly><br>
   <br>
-  <input type="text" name="input" placeholder="Enter a message" required>
-  <input type="submit" name="Send">
+  <input type="text" name="input" placeholder="Enter a message" autocomplete="off" required>
+  <input type="submit">
 </form>
 <!-- chatbot -->
 <div id="myModal" class="modal">
@@ -57,8 +57,8 @@
   </div>
 </div>
 <!-- chat iframe -->
-  <div id="chatLog"></div>
-  <iframe src="chat.php" id="iFrame"></iframe>
+<div id="chatLog"></div>
+<iframe src="chat.php" id="iFrame"></iframe>
 </body>
 </html>
 <!-- Zach's PHP script -->
